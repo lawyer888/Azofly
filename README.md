@@ -36,4 +36,6 @@ By using Kafka as a message queue, Azofly enables asynchronous request processin
 
 ## Architecture
 
-Azofly uses a unique architecture that combines the best of both worlds:
+High-level architecture showing the interaction between JavaScript, Go, and Kafka。
+![signimg](https://github.com/lawyer888/IMG/blob/main/reaaaddd.png?raw=true)
+
