@@ -24,6 +24,14 @@ Azofly，基于 Go 和 JavaScript 构建的下一代 SSR 框架。凭借 Go 的�
 High-level architecture showing the interaction between JavaScript, Go, and Kafka。
 ![signimg](https://github.com/lawyer888/IMG/blob/main/arsign.png?raw=true)
 
+
+### Key Components
+
+- **JavaScript Client**: Handles client-side rendering and user interactions
+- **Kafka Message Queue**: Enables asynchronous communication between components
+- **Go Server**: Processes requests with high concurrency and performance
+- **JavaScript Bridge**: Provides a JavaScript API to interact with Go services
+
 ## Overview
 
 Azofly is a high-performance server-side rendering (SSR) framework that leverages Go's powerful concurrency capabilities with JavaScript's rich ecosystem. The framework is designed for JavaScript developers who want to benefit from Go's performance without having to learn Go.
@@ -38,14 +46,6 @@ By using Kafka as a message queue, Azofly enables asynchronous request processin
 - **Seamless Hydration**: Client-side hydration for interactive applications
 - **Modular Architecture**: Easily extend and customize the framework
 - **Developer Experience**: Hot reloading, detailed error messages, and debugging tools
-
-
-### Key Components
-
-- **JavaScript Client**: Handles client-side rendering and user interactions
-- **Kafka Message Queue**: Enables asynchronous communication between components
-- **Go Server**: Processes requests with high concurrency and performance
-- **JavaScript Bridge**: Provides a JavaScript API to interact with Go services
 
 ## Getting Started
 
@@ -67,3 +67,19 @@ npm install
 
 # Build Go components
 make build
+
+## Quick Start
+
+### Start Kafka
+
+### Installation
+
+# Using Docker
+# docker-compose up -d kafka
+Start the development server: 
+npm run dev
+
+#Create your first Azofly app:
+#npx azofly-cli create my-app
+cd my-app
+npm run dev
