@@ -39,3 +39,31 @@ By using Kafka as a message queue, Azofly enables asynchronous request processin
 - **Modular Architecture**: Easily extend and customize the framework
 - **Developer Experience**: Hot reloading, detailed error messages, and debugging tools
 
+
+### Key Components
+
+- **JavaScript Client**: Handles client-side rendering and user interactions
+- **Kafka Message Queue**: Enables asynchronous communication between components
+- **Go Server**: Processes requests with high concurrency and performance
+- **JavaScript Bridge**: Provides a JavaScript API to interact with Go services
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js (v16+)
+- Go (v1.18+)
+- Kafka (v3.0+)
+
+### Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/azofly/azofly.git
+cd azofly
+
+# Install JavaScript dependencies
+npm install
+
+# Build Go components
+make build
