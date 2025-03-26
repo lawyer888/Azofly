@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Azofly - {{.product.name}}</title>
+    <link rel="stylesheet" href="/static/css/main.css">
+</head>
+<body>
+    <div id="app">
+        <header>
+            <h1>产品详情</h1>
+            <nav>
+                <a href="/">首页</a>
+                <a href="/about">关于</a>
+                <a href="/products">产品</a>
+            </nav>
+        </header>
+        
+        <main>
+            {{if .product}}
+            <div class="product-detail">
+                <h2>{{.product.name}}</h2>
+                <div class="product-image">
+                    <img src="{{.product.image}}" alt="{{.product.name}}">
+                </div>
+                <div class="product-info">
+                    <p class="description">{{.product.description}}</p>
+                    <p class="price">¥{{.product.price}}</p>
+                    <button class="btn add-to-cart" data-id="{{.product.id}}">加入购物车</button>
+                </div>
+            </div>
+            {{else}}
+            <p>产品不存在</p>
+            <a href="/products" class="btn">返回产品列表</a>
+            {{end}}
+        </main>
+        
+        <footer>
+            <p>&copy; 2023 Azofly 团队</p>
+        </footer>
+    </div>
+    
+    <script>
+        // 初始状态数据，将被服务端注入
+        window.__AZOFLY_INITIAL_STATE__ = {{ .data | json }};
+        
+        // 客户端交互
+        document.addEventListener('DOMContentLoaded', function() {
+            const addToCartBtn = document.querySelector('.add-to-cart');
+            if (addToCartBtn) {
+                addToCartBtn.addEventListener('click', function() {
+                    const productId = this.getAttribute('data-id');
+                    console.log('添加产品到购物车:', productId);
+                    // 这里可以添加购物车逻辑
+                });
+            }
+        });
+    </script>
+    <script src="/static/js/client.js"></script>
+</body>
+</html>

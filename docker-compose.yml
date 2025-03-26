@@ -1,0 +1,52 @@
+version: '3'
+
+services:
+  zookeeper:
+    image: confluentinc/cp-zookeeper:7.3.0
+    container_name: azofly-zookeeper
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    ports:
+      - '2181:2181'
+
+  kafka:
+    image: confluentinc/cp-kafka:7.3.0
+    container_name: azofly-kafka
+    depends_on:
+      - zookeeper
+    ports:
+      - '9092:9092'
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: 'true'
+
+  go-server:
+    build:
+      context: .
+      dockerfile: Dockerfile.go
+    container_name: azofly-go-server
+    depends_on:
+      - kafka
+    ports:
+      - '3000:3000'
+    environment:
+      KAFKA_URL: kafka:9092
+    volumes:
+      - ./packages/core/go:/app/go
+    command: ['go', 'run', '/app/go/main.go', '--kafka', 'kafka:9092']
+
+  js-dev:
+    image: node:18
+    container_name: azofly-js-dev
+    working_dir: /app
+    volumes:
+      - .:/app
+    ports:
+      - '8080:8080'
+    command: ['npm', 'run', 'dev']
+    environment:
+      GO_SERVER_URL: http://go-server:3000

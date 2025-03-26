@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Azofly - 关于我们</title>
+    <link rel="stylesheet" href="/static/css/main.css">
+</head>
+<body>
+    <div id="app">
+        <header>
+            <h1>关于 Azofly</h1>
+            <nav>
+                <a href="/">首页</a>
+                <a href="/about">关于</a>
+                <a href="/products">产品</a>
+            </nav>
+        </header>
+        
+        <main>
+            <h2>我们的故事</h2>
+            <p>Azofly 是一个创新的 SSR 框架，旨在结合 Go 和 JavaScript 的优势。</p>
+            <p>我们的团队由一群热爱技术的开发者组成，致力于创造更好的 Web 开发体验。</p>
+            
+            <h2>技术架构</h2>
+            <p>Azofly 使用 Kafka 作为消息队列，实现前端和 Go 后端之间的通信。</p>
+            <p>前端将请求发送到消息队列，Go 服务器从消息队列中获取请求并处理，处理结果再返回给前端。</p>
+            <p>这种架构可以实现请求的异步处理，提高系统的并发能力和可靠性。</p>
+        </main>
+        
+        <footer>
+            <p>&copy; 2023 Azofly 团队</p>
+        </footer>
+    </div>
+    
+    <script>
+        // 初始状态数据，将被服务端注入
+        window.__AZOFLY_INITIAL_STATE__ = {{ .data | json }};
+    </script>
+    <script src="/static/js/client.js"></script>
+</body>
+</html>

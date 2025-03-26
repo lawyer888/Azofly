@@ -1,0 +1,32 @@
+{
+	"name": "azofly",
+	"version": "0.1.0",
+	"description": "基于 Go 和 JavaScript 构建的下一代 SSR 框架",
+	"main": "packages/core/js/src/index.js",
+	"scripts": {
+		"dev": "node scripts/dev.js",
+		"build": "node scripts/build.js",
+		"test": "node scripts/test.js",
+		"lint": "eslint .",
+		"start": "go run packages/core/go/main.go"
+	},
+	"keywords": [
+		"ssr",
+		"go",
+		"javascript",
+		"kafka",
+		"framework"
+	],
+	"author": "Azofly Team",
+	"license": "MIT",
+	"dependencies": {
+		"uuid": "^9.0.0"
+	},
+	"devDependencies": {
+		"esbuild": "^0.17.19",
+		"eslint": "^8.38.0",
+		"prettier": "^2.8.7",
+		"rimraf": "^5.0.0",
+		"typescript": "^5.0.4"
+	}
+}
